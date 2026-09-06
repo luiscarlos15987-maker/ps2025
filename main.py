@@ -79,4 +79,19 @@ def analisar_gastos():
      print("RECOMENDAÇÃO: Tente reduzir seus gastos para aumentar sua reserva.")
     else:
      print("SITUAÇÃO: Você possui uma margem razoável do salário disponível.")
-analisar_gastos()
+while True:
+    print("\n===== MENU =====")
+    print("1 - Analisar gastos")
+    print("2 - Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        analisar_gastos()
+
+    elif opcao == "2":
+        print("Programa encerrado.")
+        break
+
+    else:
+        print("ERRO: Opção inválida.")
