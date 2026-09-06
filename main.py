@@ -6,7 +6,7 @@ def calcular_percentual(valor, salario):
 def ler_valor(mensagem, permitir_zero=False):
     while True:
         try:
-            valor = float(input(mensagem))
+            valor = float(input(mensagem).replace(",", "."))
 
             if valor < 0:
                 print("ERRO: O valor não pode ser negativo.")
