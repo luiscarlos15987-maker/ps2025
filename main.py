@@ -59,35 +59,20 @@ def analisar_gastos():
      print("SITUAÇÃO: Seus gastos estão sob controle.")
     percentual_sobra = calcular_percentual(saldo, salario)
     print(f"Percentual do salário disponível: {percentual_sobra:.1f}%")
+    # Organiza os gastos em um dicionário
+    gastos = {
+    "Aluguel": aluguel,
+    "Alimentação": alimentacao,
+    "Transporte": transporte,
+    "Internet": internet,
+    "Energia elétrica": energia,
+    "Água": agua,
+    "Lazer": lazer
+}
+
     # Identifica o maior gasto
-    if aluguel >= alimentacao and aluguel >= transporte and aluguel >= internet and aluguel >= energia and aluguel >= agua and aluguel >= lazer:
-        maior_gasto = "Aluguel"
-        valor_maior_gasto = aluguel
-
-    elif alimentacao >= transporte and alimentacao >= internet and alimentacao >= energia and alimentacao >= agua and alimentacao >= lazer:
-        maior_gasto = "Alimentação"
-        valor_maior_gasto = alimentacao
-
-    elif transporte >= internet and transporte >= energia and transporte >= agua and transporte >= lazer:
-        maior_gasto = "Transporte"
-        valor_maior_gasto = transporte
-
-    elif internet >= energia and internet >= agua and internet >= lazer:
-        maior_gasto = "Internet"
-        valor_maior_gasto = internet
-
-    elif energia >= agua and energia >= lazer:
-        maior_gasto = "Energia elétrica"
-        valor_maior_gasto = energia
-
-    elif agua >= lazer:
-        maior_gasto = "Água"
-        valor_maior_gasto = agua
-
-    else:
-        maior_gasto = "Lazer"
-        valor_maior_gasto = lazer
-
+    maior_gasto = max(gastos, key=gastos.get)
+    valor_maior_gasto = gastos[maior_gasto]
     print(f"Maior gasto: {maior_gasto} - R$ {valor_maior_gasto:.2f}")
     print("\n--- PERCENTUAL POR CATEGORIA ---")
 
@@ -121,19 +106,20 @@ def analisar_gastos():
      print("RECOMENDAÇÃO: Tente reduzir seus gastos para aumentar sua reserva.")
     else:
      print("SITUAÇÃO: Você possui uma margem razoável do salário disponível.")
-while True:
-    print("\n===== MENU =====")
-    print("1 - Analisar gastos")
-    print("2 - Sair")
+    while True:
+     print("\n===== MENU =====")
+     print("1 - Analisar gastos")
+     print("2 - Sair")
 
-    opcao = input("Escolha uma opção: ")
+     opcao = input("Escolha uma opção: ")
 
-    if opcao == "1":
+     if opcao == "1":
         analisar_gastos()
 
-    elif opcao == "2":
+     elif opcao == "2":
         print("Programa encerrado.")
         break
 
-    else:
-        print("ERRO: Opção inválida.")
+     else:
+      print("ERRO: Opção inválida.")
+analisar_gastos()
