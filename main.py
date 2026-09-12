@@ -30,7 +30,22 @@ def analisar_gastos():
     transporte = ler_valor("Digite o valor do transporte: R$ ", permitir_zero=True)
 
     internet = ler_valor("Digite o valor da internet: R$ ", permitir_zero=True)
-    total_gastos = aluguel + alimentacao + transporte + internet
+
+    energia = ler_valor("Digite o valor da energia elétrica: R$ ", permitir_zero=True)
+
+    agua = ler_valor("Digite o valor da água: R$ ", permitir_zero=True)
+
+    lazer = ler_valor("Digite o valor do lazer: R$ ", permitir_zero=True)
+
+    total_gastos = (
+    aluguel
+    + alimentacao
+    + transporte
+    + internet
+    + energia
+    + agua
+    + lazer
+)
     saldo = salario - total_gastos
     print(f"Total de gastos: R$ {total_gastos:.2f}")
     print(f"Saldo restante: R$ {saldo:.2f}")
@@ -45,18 +60,33 @@ def analisar_gastos():
     percentual_sobra = calcular_percentual(saldo, salario)
     print(f"Percentual do salário disponível: {percentual_sobra:.1f}%")
     # Identifica o maior gasto
-    if aluguel >= alimentacao and aluguel >= transporte and aluguel >= internet:
-       maior_gasto = "Aluguel"
-       valor_maior_gasto = aluguel
-    elif alimentacao >= transporte and alimentacao >= internet:
-       maior_gasto = "Alimentação"
-       valor_maior_gasto = alimentacao
-    elif transporte >= internet:
-       maior_gasto = "Transporte"
-       valor_maior_gasto = transporte
+    if aluguel >= alimentacao and aluguel >= transporte and aluguel >= internet and aluguel >= energia and aluguel >= agua and aluguel >= lazer:
+        maior_gasto = "Aluguel"
+        valor_maior_gasto = aluguel
+
+    elif alimentacao >= transporte and alimentacao >= internet and alimentacao >= energia and alimentacao >= agua and alimentacao >= lazer:
+        maior_gasto = "Alimentação"
+        valor_maior_gasto = alimentacao
+
+    elif transporte >= internet and transporte >= energia and transporte >= agua and transporte >= lazer:
+        maior_gasto = "Transporte"
+        valor_maior_gasto = transporte
+
+    elif internet >= energia and internet >= agua and internet >= lazer:
+        maior_gasto = "Internet"
+        valor_maior_gasto = internet
+
+    elif energia >= agua and energia >= lazer:
+        maior_gasto = "Energia elétrica"
+        valor_maior_gasto = energia
+
+    elif agua >= lazer:
+        maior_gasto = "Água"
+        valor_maior_gasto = agua
+
     else:
-       maior_gasto = "Internet"
-       valor_maior_gasto = internet
+        maior_gasto = "Lazer"
+        valor_maior_gasto = lazer
 
     print(f"Maior gasto: {maior_gasto} - R$ {valor_maior_gasto:.2f}")
     print("\n--- PERCENTUAL POR CATEGORIA ---")
@@ -65,6 +95,9 @@ def analisar_gastos():
     print(f"Alimentação: {calcular_percentual(alimentacao, salario):.1f}%")
     print(f"Transporte: {calcular_percentual(transporte, salario):.1f}%")
     print(f"Internet: {calcular_percentual(internet, salario):.1f}%")
+    print(f"Energia elétrica: {calcular_percentual(energia, salario):.1f}%")
+    print(f"Água: {calcular_percentual(agua, salario):.1f}%")
+    print(f"Lazer: {calcular_percentual(lazer, salario):.1f}%")
 
     if calcular_percentual(aluguel, salario) > 30:
      print("ATENÇÃO: O aluguel representa uma parcela alta do seu salário.")
@@ -74,6 +107,15 @@ def analisar_gastos():
 
     if calcular_percentual(transporte, salario) > 15:
      print("ATENÇÃO: Os gastos com transporte estão elevados.")
+
+    if calcular_percentual(energia, salario) > 10:
+     print("ATENÇÃO: Os gastos com energia elétrica estão elevados.")
+
+    if calcular_percentual(agua, salario) > 10:
+     print("ATENÇÃO: Os gastos com água estão elevados.")
+
+    if calcular_percentual(lazer, salario) > 15:
+     print("ATENÇÃO: Os gastos com lazer estão elevados.")
 
     if percentual_sobra < 20:
      print("RECOMENDAÇÃO: Tente reduzir seus gastos para aumentar sua reserva.")
