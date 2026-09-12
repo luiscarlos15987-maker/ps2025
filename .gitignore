@@ -8,8 +8,9 @@ _pycache_/
 venv/
 env/
 
-# Variáveis de ambiente
-.env
-
-# Configurações locais do VS Code
+# VS Code
 .vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
