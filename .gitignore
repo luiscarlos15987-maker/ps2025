@@ -1,16 +1,19 @@
+# Node
+node_modules/
+dist/
+dist-ssr/
+
+# Netlify CLI (estado local)
+.netlify/state.json
+.netlify/functions-serve/
+.netlify/edge-functions-serve/
+.netlify/blobs-serve/
+
 # Python
-_pycache_/
+__pycache__/
 *.py[cod]
-*$py.class
 
-# Ambientes virtuais
-.venv/
-venv/
-env/
-
-# VS Code
-.vscode/
-
-# Arquivos do sistema
+# Sistema
 .DS_Store
 Thumbs.db
+.vscode/
